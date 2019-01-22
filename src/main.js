@@ -3,6 +3,16 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import util from './fn/util'
+
+import date from './filter/date'
+import number from './filter/number'
+import phone from './filter/phone'
+
+Vue.use(util)
+Vue.filter('date', date)
+Vue.filter('number', number)
+Vue.filter('phone', phone)
 Vue.config.productionTip = false
 
 new Vue({
