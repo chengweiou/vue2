@@ -1,4 +1,5 @@
 export default {
+  'POST /xxx': 4,
   'GET /xxx/:id': { id: 2, name: 'bbb', date: '2019-02-03', phone: '9876543211', vote: 587 },
   'GET /xxx/count': 3,
   'GET /xxx': [

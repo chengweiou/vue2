@@ -3,6 +3,16 @@ import site from './config/site'
 import paramUtil from './util/paramUtil'
 
 export default class {
+  static save(e) {
+    let url = `${site.hiveel}/xxx`
+    let formData = new FormData()
+    formData.append('name', e.name)
+    let options = {
+      method: 'POST',
+      body: formData,
+    }
+    return fetchUtil.run(url, options)
+  }
   static loadById(e) {
     let url = `${site.xxx}/xxx/${e.id}`
     let options = {

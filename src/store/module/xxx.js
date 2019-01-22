@@ -10,12 +10,23 @@ const CLEAN_STATE = {
 const state = { ...CLEAN_STATE }
 
 const actions = {
+  async save({ commit, dispatch, state, rootState }, payload, config = {}) {
+    let rest = await service.save(payload)
+    if (rest.code !== 'SUCCESS') {
+      return
+    }
+    state.list.push({ ...payload, id: rest.data })
+    commit('list', state.list)
+  },
   async loadById({ commit, dispatch, state, rootState }, payload, config = {}) {
     let rest = await service.loadById({ id: payload.id })
     if (rest.code !== 'SUCCESS') {
       return
     }
     commit('detail', rest.data)
+  },
+  changeFilter({ commit, dispatch, state, rootState }, payload, config = {}) {
+    commit('filter', state.filter)
   },
   async count({ commit, dispatch, state, rootState }, payload, config = {}) {
     let rest = await service.count(state.filter)
