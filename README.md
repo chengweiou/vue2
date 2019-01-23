@@ -1,5 +1,12 @@
 # vue2
 
+启动步骤:
+安装相关组件: yarn | npm install
+启动本地服务: yarn serve
+打包生产环境: yarn build
+运行测试: yarn test:unit
+
+介绍:
 1.分支
   master: 成品
   dev: 某一模块完成，不报错
