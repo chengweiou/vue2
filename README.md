@@ -1,7 +1,7 @@
 # vue2
 
 启动步骤:
-获取代码: git clone，删除.git文件夹
+获取代码: git clone，checkout dev, 删除.git文件夹
 安装相关组件: yarn | npm install
 启动本地服务: yarn serve
 打包生产环境: yarn build
