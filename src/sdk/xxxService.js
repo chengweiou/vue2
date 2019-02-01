@@ -4,7 +4,7 @@ import paramUtil from './util/paramUtil'
 
 export default class {
   static save(e) {
-    let url = `${site.hiveel}/xxx`
+    let url = `${site.xxx}/xxx`
     let formData = new FormData()
     formData.append('name', e.name)
     let options = {
