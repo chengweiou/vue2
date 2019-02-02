@@ -7,9 +7,9 @@
     <div>
       <section>{{detail.id}}</section>
       <section>{{detail.name}}</section>
-      <section>{{detail.phone | phone}}</section>
-      <section>{{detail.vote | number}}</section>
-      <section>{{detail.date | date}}</section>
+      <section>{{detail.phy | number}}</section>
+      <section>{{detail.bld | number}}</section>
+      <section>{{detail.createAt | date}}</section>
     </div>
   </main>
 </template>
@@ -22,7 +22,7 @@ export default {
     }
   },
   computed: {
-    detail() { return this.$store.state.xxx.detail },
+    detail() { return this.$store.state.weapon.detail },
   },
   components: {
     centerImage,
@@ -32,10 +32,10 @@ export default {
   },
   methods: {
     async loadById() {
-      this.$store.dispatch('xxx/loadById', { id: this.$route.params.id })
+      this.$store.dispatch('weapon/loadById', { id: this.$route.params.id })
     },
     goList() {
-      this.$router.push({ name: 'xxxList' })
+      this.$router.push({ name: 'weaponList' })
     },
   },
 }

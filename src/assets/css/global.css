@@ -1,0 +1,91 @@
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  height: 100%;
+  background: #444;
+  color: #ddd;
+  outline: none;
+}
+input {
+  outline: none;
+}
+button {
+  outline: none;
+}
+
+.bg-white {
+  background: #fff;
+}
+.c-white {
+  color: #fff;
+}
+.bg-black {
+  background: #444;
+}
+.c-black {
+  color: #444;
+}
+
+.btn-white {
+  background: transparent;
+  border: 1px solid #ddd;
+  color: #ddd;
+  cursor: pointer;
+}
+.btn-white:hover {
+  background: #ddd;
+  border: 1px solid #ddd;
+  color: #444;
+}
+
+.f-t1 {
+  font-size: 18px;
+  font-weight: 500;
+}
+.f-t2 {
+  font-size: 14px;
+  font-weight: 400;
+}
+.f-t3 {
+  font-weight: 400;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.df {
+  display: flex;
+}
+.df-jcsb {
+  justify-content: space-between;
+}
+.df-jcse {
+  justify-content: space-evenly;
+}
+.df-jcfe {
+  justify-content: flex-end;
+}
+.df-aic {
+  align-items: center;
+}
+.df-aife {
+  align-items: flex-end;
+}
+.df-wrap {
+  flex-wrap: wrap;
+}
+.df-wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+.df-column {
+  flex-direction: column;
+}
+.pointer {
+  cursor: pointer;
+}
