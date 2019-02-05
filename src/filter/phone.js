@@ -1,4 +1,7 @@
-export default function number(v) {
+/**
+ * 变更格式为: 1 (999) 888 - 8888
+ */
+export default (v) => {
   if (!v) {
     return ''
   }

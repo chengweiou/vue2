@@ -3,6 +3,16 @@
     <div>
       <div>
         <section><input v-model="form.name"></section>
+        <section style="width: 100px; height: 100px; cursor: pointer;">
+          <button @click="reloadDb">reload db img</button>
+          <label v-if="form.img" style="width: 100%; height: 100%; display: block;">
+            <centerImage :src="form.img"/>
+            <input type="file" style="display: none;" @change="readPic()">
+          </label>
+          <label v-else style="width: 100%; height: 100%; display: block;">
+            Image <input type="file" style="display: none;" @change="readPic()" >
+          </label>
+        </section>
         <div style="display: flex;">
           <div v-if="saveLoading" style="height: 20px;"><loading style="width: 20px; "/></div>
           <div v-else><button style="width: 100px; height: 20px;" @click="save">save</button></div>
@@ -31,12 +41,14 @@
 
 <script>
 import loading from '@/component/loading'
+import centerImage from '@/component/image/centerImage'
+
 export default {
   data() {
     return {
       loading: false,
       saveLoading: false,
-      form: {}, // 图片的话，需要把图片属性名写上，否则本地缩略图会出不来
+      form: { img: '' }, // 图片的话，需要把图片属性名写上，否则本地缩略图会出不来
     }
   },
   computed: {
@@ -45,13 +57,24 @@ export default {
     list() { return this.$store.state.xxx.list },
   },
   components: {
-    loading,
+    loading, centerImage,
   },
   created() {
     this.count()
     this.load()
   },
   methods: {
+    reloadDb() {
+      this.form = this.$store.state.xxxDb.save
+    },
+    readPic() {
+      let reader = new FileReader()
+      reader.onload = () => {
+        this.form.img = reader.result
+        this.$store.dispatch('xxxDb/save', this.form)
+      }
+      reader.readAsDataURL(event.target.files[0])
+    },
     async save() {
       if (!this.form.name) {
         return

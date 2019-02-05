@@ -1,15 +1,16 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import cachePlugin from './plugin'
-import dbPlugin from './dbPlugin'
+import plugin from './plugin'
 
+import me from './module/me'
 import xxx from './module/xxx'
+import xxxDb from './module/xxxDb'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
-    xxx,
+    me, xxx, xxxDb,
   },
-  plugins: [cachePlugin, dbPlugin],
+  plugins: plugin,
 })
