@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import cachePlugin from './plugin'
-import dbPlugin from './dbPlugin'
+import plugin from './plugin'
 
 import failBox from './module/failBox'
 import modal from './module/modal'
@@ -16,5 +15,5 @@ export default new Vuex.Store({
   modules: {
     modal, me, weapon, weaponDb, failBox,
   },
-  plugins: [cachePlugin, dbPlugin],
+  plugins: plugin,
 })

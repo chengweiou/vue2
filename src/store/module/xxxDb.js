@@ -10,9 +10,6 @@ const actions = {
   async save({ commit, dispatch, state, rootState }, payload, config = {}) {
     commit('save', payload)
   },
-  async cleanSave({ commit, dispatch, state, rootState }, payload, config = {}) {
-    commit('save', { ...CLEAN_STATE })
-  },
 }
 
 const mutations = {

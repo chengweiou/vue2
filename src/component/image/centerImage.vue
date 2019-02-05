@@ -3,6 +3,11 @@
 </template>
 
 <script scoped>
+/**
+ * 中心图片一般两种形式，以下采用: 1
+ * 1.剪裁掉超出显示框的部分
+ * 2.保留全图，宽高比不足的部分纯色填充
+ */
 export default {
   props: {
     width: { default: '100%' },

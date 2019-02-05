@@ -85,13 +85,13 @@ export default {
     return {
       loading: false,
       saveLoading: false,
+      form: { img: '' },
     }
   },
   computed: {
     total() { return this.$store.state.weapon.total },
     filter() { return this.$store.state.weapon.filter },
     list() { return this.$store.state.weapon.list },
-    form() { return this.$store.state.weaponDb.save },
   },
   components: {
     loading, centerImage, modal,
@@ -103,7 +103,7 @@ export default {
   methods: {
     onSave() {
       this.$store.dispatch('modal/on')
-      this.form = this.db
+      this.form = this.$store.state.weaponDb.save
     },
     offSave() {
       this.$store.dispatch('modal/off')

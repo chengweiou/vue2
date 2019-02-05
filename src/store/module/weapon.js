@@ -18,7 +18,7 @@ const actions = {
       return
     }
     payload.imgSrc = rest.data
-    delete payload.img
+    payload.img = ''
     rest = await service.save(payload)
     if (rest.code !== 'SUCCESS') {
       dispatch('failBox/onRest', rest, { root: true })
@@ -26,7 +26,8 @@ const actions = {
     }
     state.list.push({ ...payload, id: rest.data })
     commit('list', state.list)
-    dispatch('modal/off', rest, { root: true })
+    dispatch('modal/off', null, { root: true })
+    dispatch('weaponDb/cleanSave', null, { root: true })
   },
   async loadById({ commit, dispatch, state, rootState }, payload, config = {}) {
     let rest = await service.loadById({ id: payload.id })

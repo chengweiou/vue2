@@ -2,7 +2,9 @@
   <canvas style="width: 100%; height: 100%;" ref="canvas"/>
 </template>
 <script>
-
+/**
+ * 小球跳跃
+ */
 export default {
   data() {
     return {

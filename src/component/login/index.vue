@@ -7,11 +7,11 @@
         <div style="margin-bottom: 50px;">
           <section class="df df-aic" style="margin-bottom: 10px;">
             <div style="margin-right: 10px;">username:</div>
-            <div class="" style="width: 200px; height:20px; border: 1px solid #ddd;"><input style="margin: 0 10px; width: 90%; background: transparent; border: 0; color: #ddd;" v-model="account.username"></div>
+            <div class="" style="width: 200px; height:20px; border: 1px solid #ddd;"><input style="margin: 0 10px; width: 90%; background: transparent; border: 0; color: #ddd;" v-model="form.username"></div>
           </section>
           <section class="df df-aic" style="margin-bottom: 10px;">
             <div style="margin-right: 10px;">password:</div>
-            <div class="" style="width: 200px; height:20px; border: 1px solid #ddd;"><input type="password" style="margin: 0 10px; width: 90%; background: transparent; border: 0; color: #ddd;" v-model="account.password"></div>
+            <div class="" style="width: 200px; height:20px; border: 1px solid #ddd;"><input type="password" style="margin: 0 10px; width: 90%; background: transparent; border: 0; color: #ddd;" v-model="form.password"></div>
           </section>
         </div>
         <section class="center" style="margin-bottom: 10px;">

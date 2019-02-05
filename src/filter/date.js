@@ -1,4 +1,8 @@
-export default function date(e, option) {
+/**
+ * 变更日志形式: 使用 yyyy, yy, MMM, MM, dd, HH, mm, ss
+ * option包含: from, to 的格式传递
+ */
+export default (e, option) => {
   if (!e) {
     return ''
   }
