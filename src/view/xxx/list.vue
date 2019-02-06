@@ -10,7 +10,7 @@
             <input type="file" style="display: none;" @change="readPic()">
           </label>
           <label v-else style="width: 100%; height: 100%; display: block;">
-            Image <input type="file" style="display: none;" @change="readPic()" >
+            {{ $t('Image') }} <input type="file" style="display: none;" @change="readPic()" >
           </label>
         </section>
         <div style="display: flex;">
@@ -35,6 +35,10 @@
         </article>
       </div>
       <section>total: {{total}}</section>
+    </div>
+    <div>
+      message from golbal i18n: {{ $t('message') }}
+      <button @click="changeLang">chang language</button>
     </div>
   </main>
 </template>
@@ -99,6 +103,20 @@ export default {
     goDetail(i) {
       this.$router.push({ name: 'xxx', params: { id: this.list[i].id } })
     },
+    changeLang() {
+      this.$i18n.locale = this.$i18n.locale === 'en' ? 'zh' : 'en'
+      this.$storage.set('lang', this.$i18n.locale)
+    },
   },
 }
 </script>
+<i18n>
+{
+  "en": {
+    "Image": "Image"
+  },
+  "zh": {
+    "Image": "图片"
+  }
+}
+</i18n>

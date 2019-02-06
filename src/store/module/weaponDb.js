@@ -11,7 +11,7 @@ const actions = {
     commit('save', payload)
   },
   async cleanSave({ commit, dispatch, state, rootState }, payload, config = {}) {
-    commit('save', { ...CLEAN_STATE })
+    commit('save', { ...CLEAN_STATE }.save)
   },
 }
 

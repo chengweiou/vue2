@@ -5,6 +5,7 @@ import store from './store'
 import i18n from './i18n'
 
 import util from './fn/util'
+import project from './fn/project'
 
 import date from './filter/date'
 import number from './filter/number'
@@ -13,6 +14,7 @@ import phone from './filter/phone'
 import './assets/css/global.css'
 
 Vue.use(util)
+Vue.use(project)
 Vue.filter('date', date)
 Vue.filter('number', number)
 Vue.filter('phone', phone)

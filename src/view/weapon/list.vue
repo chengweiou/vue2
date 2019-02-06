@@ -138,8 +138,6 @@ export default {
       this.$store.dispatch('weapon/count')
     },
     async load() {
-      console.log(this.$store.state.weaponDb)
-
       this.loading = true
       await Promise.all([this.$store.dispatch('weapon/load'), this.$wait(1000)])
       this.loading = false
