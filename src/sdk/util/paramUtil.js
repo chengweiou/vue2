@@ -12,6 +12,9 @@ export default class {
     return formData
   }
   static createUrlEncode(e, father) {
-    return Object.keys(e).map((k) => e[k] instanceof Object ? this.createUrlEncode(e[k], k) : e[k] ? father ? `${father}.${k}=${e[k]}` : `${k}=${e[k]}` : '').join('&')
+    return Object.keys(e).filter(k => e[k] || e[k] === 0).map(k => {
+      let name = father ? `${father}.${k}` : `${k}`
+      return e[k].constructor === Object ? this.createUrlEncode(e[k], k) : `${name}=${e[k]}`
+    }).join('&')
   }
 }
