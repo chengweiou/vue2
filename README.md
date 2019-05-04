@@ -1,5 +1,15 @@
 # vue2
 
+#### 上传
+```
+./uat.sh
+```
+first time:
+```
+chmod +x uat.sh
+./uat.sh
+```
+
 ## Project setup
 ```
 yarn install

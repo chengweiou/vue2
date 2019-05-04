@@ -39,6 +39,12 @@ export default class {
         if (!reg.test(url)) return
         matchList.push(k)
       })
+      if (!matchList.length) {
+        let msg = `${options.method} ${url}  ---> cannot find match data`
+        console.log(msg)
+        resolve({ code: 'SUCCESS', msg: msg })
+        return
+      }
       matchList.sort((a, b) => a.split('/:').length - b.split('/:').length)
       resolve({ code: 'SUCCESS', data: dataMap[matchList[0]] })
     })
