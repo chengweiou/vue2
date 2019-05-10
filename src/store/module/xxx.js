@@ -1,4 +1,5 @@
 import service from '@/sdk/xxxService'
+import clone from '@/filter/clone'
 
 const CLEAN_STATE = {
   total: 0,
@@ -49,7 +50,7 @@ const actions = {
 
 const mutations = {
   reset(state, e) {
-    state = { ...CLEAN_STATE }
+    state = clone(CLEAN_STATE)
   },
   detail(state, e) {
     state.detail = e
@@ -59,6 +60,9 @@ const mutations = {
   },
   list(state, e) {
     state.list = e
+  },
+  filter(state, e) {
+    state.filter = e
   },
 }
 
