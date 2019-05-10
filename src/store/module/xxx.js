@@ -1,4 +1,5 @@
 import service from '@/sdk/xxxService'
+import clone from '@/filter/clone'
 
 const CLEAN_STATE = {
   total: 0,
@@ -43,14 +44,12 @@ const actions = {
     commit('list', rest.data)
   },
   reset({ commit, dispatch, state, rootState }, payload, config = {}) {
-    commit('reset', 'REMOVE')
+    commit('filter', clone(CLEAN_STATE))
   },
 }
 
 const mutations = {
-  reset(state, e) {
-    state = { ...CLEAN_STATE }
-  },
+
   detail(state, e) {
     state.detail = e
   },
@@ -59,6 +58,9 @@ const mutations = {
   },
   list(state, e) {
     state.list = e
+  },
+  filter(state, e) {
+    state.filter = e
   },
 }
 
