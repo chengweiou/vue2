@@ -44,12 +44,14 @@ const actions = {
     commit('list', rest.data)
   },
   reset({ commit, dispatch, state, rootState }, payload, config = {}) {
-    commit('filter', clone(CLEAN_STATE))
+    commit('reset', 'REMOVE')
   },
 }
 
 const mutations = {
-
+  reset(state, e) {
+    state = clone(CLEAN_STATE)
+  },
   detail(state, e) {
     state.detail = e
   },
