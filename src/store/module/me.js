@@ -1,9 +1,9 @@
+import clone from '@/fn/util/clone'
 const CLEAN_STATE = {
   user: {}, // 目前用于给db获取身份区别
 }
 
-const state = { ...CLEAN_STATE }
-
+const state = clone(CLEAN_STATE)
 const actions = {
 }
 

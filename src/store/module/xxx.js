@@ -1,5 +1,5 @@
 import service from '@/sdk/xxxService'
-import clone from '@/filter/clone'
+import clone from '@/fn/util/clone'
 
 const CLEAN_STATE = {
   total: 0,
@@ -8,7 +8,7 @@ const CLEAN_STATE = {
   detail: {},
 }
 
-const state = { ...CLEAN_STATE }
+const state = clone(CLEAN_STATE)
 
 const actions = {
   async save({ commit, dispatch, state, rootState }, payload, config = {}) {

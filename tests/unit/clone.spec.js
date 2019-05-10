@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import clone from '../../src/filter/clone'
+import clone from '../../src/fn/util/clone'
 
 describe('deep copy', () => {
   it('str', () => {

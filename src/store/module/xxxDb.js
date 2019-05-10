@@ -1,10 +1,12 @@
+import clone from '@/fn/util/clone'
+
 const CLEAN_STATE = {
   db: true,
   cache: false,
   save: { img: '' },
 }
 
-const state = { ...CLEAN_STATE }
+const state = clone(CLEAN_STATE)
 
 const actions = {
   async save({ commit, dispatch, state, rootState }, payload, config = {}) {
