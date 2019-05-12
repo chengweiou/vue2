@@ -22,6 +22,7 @@
     </div>
     <div>
       <button @click="load">reload</button>
+      <button @click="reset">reset</button>
       <div>filter.name<input v-model="filter.name" @keyup="changeFilter"></div>
       <div v-if="loading"><loading style="width: 30px; height: 30px;"/></div>
       <div v-else style="display: flex; flex-wrap: wrap;">
@@ -68,6 +69,9 @@ export default {
     this.load()
   },
   methods: {
+    reset() {
+      this.$store.dispatch('xxx/reset')
+    },
     reloadDb() {
       this.form = this.$store.state.xxxDb.save
     },

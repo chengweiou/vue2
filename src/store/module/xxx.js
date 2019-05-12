@@ -1,5 +1,4 @@
-import service from '@/sdk/weaponService'
-import uploadService from '@/sdk/uploadService'
+import service from '@/sdk/xxxService'
 import clone from '@/fn/util/clone'
 
 const CLEAN_STATE = {
@@ -13,33 +12,19 @@ const state = clone(CLEAN_STATE)
 
 const actions = {
   async save({ commit, dispatch, state, rootState }, payload, config = {}) {
-    let rest = await uploadService.save({ file: payload.img })
+    let rest = await service.save(payload)
     if (rest.code !== 'SUCCESS') {
-      dispatch('failBox/onRest', rest, { root: true })
-      return
-    }
-    payload.imgSrc = rest.data
-    payload.img = ''
-    rest = await service.save(payload)
-    if (rest.code !== 'SUCCESS') {
-      dispatch('failBox/onRest', rest, { root: true })
       return
     }
     state.list.push({ ...payload, id: rest.data })
     commit('list', state.list)
-    dispatch('modal/off', null, { root: true })
-    dispatch('weaponDb/cleanSave', null, { root: true })
   },
   async loadById({ commit, dispatch, state, rootState }, payload, config = {}) {
     let rest = await service.loadById({ id: payload.id })
     if (rest.code !== 'SUCCESS') {
-      dispatch('failBox/onRest', rest, { root: true })
       return
     }
     commit('detail', rest.data)
-  },
-  resetFilter({ commit, dispatch, state, rootState }, payload, config = {}) {
-    commit('resetFilter', 'REMOVE')
   },
   changeFilter({ commit, dispatch, state, rootState }, payload, config = {}) {
     commit('filter', state.filter)
@@ -47,7 +32,6 @@ const actions = {
   async count({ commit, dispatch, state, rootState }, payload, config = {}) {
     let rest = await service.count(state.filter)
     if (rest.code !== 'SUCCESS') {
-      dispatch('failBox/onRest', rest, { root: true })
       return
     }
     commit('total', rest.data)
@@ -55,7 +39,6 @@ const actions = {
   async load({ commit, dispatch, state, rootState }, payload, config = {}) {
     let rest = await service.load(state.filter)
     if (rest.code !== 'SUCCESS') {
-      dispatch('failBox/onRest', rest, { root: true })
       return
     }
     commit('list', rest.data)
@@ -75,15 +58,11 @@ const mutations = {
   total(state, e) {
     state.total = e
   },
-  resetFilter(state, e) {
-    state.filter = { ...clone(CLEAN_STATE).filter }
-    state.list = []
+  list(state, e) {
+    state.list = e
   },
   filter(state, e) {
     state.filter = e
-  },
-  list(state, e) {
-    state.list = e
   },
 }
 

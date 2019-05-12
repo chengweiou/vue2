@@ -1,13 +1,13 @@
 import accountService from '@/sdk/accountService'
 import router from '@/router'
+import clone from '@/fn/util/clone'
 const CLEAN_STATE = {
   showLogin: false,
   auth: false,
   user: {},
 }
 
-const state = { ...CLEAN_STATE }
-
+const state = clone(CLEAN_STATE)
 const actions = {
   async onLogin({ commit, dispatch, state, rootState }, payload, config = {}) {
     commit('showLogin', true)
