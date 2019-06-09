@@ -4,7 +4,7 @@ import paramUtil from './util/paramUtil'
 
 export default class {
   static save(e) {
-    let url = `${site.xxx}/weapon`
+    let url = `${site.xxx}/xxx`
     let formData = new FormData()
     formData.append('name', e.name)
     formData.append('phy', e.phy)
@@ -17,21 +17,21 @@ export default class {
     return fetchUtil.run(url, options)
   }
   static findById(e) {
-    let url = `${site.xxx}/weapon/${e.id}`
+    let url = `${site.xxx}/xxx/${e.id}`
     let options = {
       method: 'GET',
     }
     return fetchUtil.run(url, options)
   }
   static count(filter) {
-    let url = `${site.xxx}/weapon/count?${paramUtil.createUrlEncode(filter)}`
+    let url = `${site.xxx}/xxx/count?${paramUtil.createUrlEncode(filter)}`
     let options = {
       method: 'GET',
     }
     return fetchUtil.run(url, options)
   }
   static find(filter) {
-    let url = `${site.xxx}/weapon?${paramUtil.createUrlEncode(filter)}`
+    let url = `${site.xxx}/xxx?${paramUtil.createUrlEncode(filter)}`
     let options = {
       method: 'GET',
     }

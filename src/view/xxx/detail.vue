@@ -22,7 +22,7 @@ export default {
     }
   },
   computed: {
-    detail() { return this.$store.state.weapon.detail },
+    detail() { return this.$store.state.xxx.detail },
   },
   components: {
     centerImage,
@@ -32,10 +32,10 @@ export default {
   },
   methods: {
     async findById() {
-      this.$store.dispatch('weapon/findById', { id: this.$route.params.id })
+      this.$store.dispatch('xxx/findById', { id: this.$route.params.id })
     },
     goList() {
-      this.$router.push({ name: 'weaponList' })
+      this.$router.push({ name: 'xxxList' })
     },
   },
 }

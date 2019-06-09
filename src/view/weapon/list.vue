@@ -98,7 +98,7 @@ export default {
   },
   created() {
     this.count()
-    this.load()
+    this.find()
   },
   methods: {
     onSave() {
@@ -127,19 +127,19 @@ export default {
     reset() {
       this.$store.dispatch('weapon/reset')
       this.count()
-      this.load()
+      this.find()
     },
     changeFilter() {
       this.$store.dispatch('weapon/changeFilter')
-      this.load()
+      this.find()
       this.count()
     },
     async count() {
       this.$store.dispatch('weapon/count')
     },
-    async load() {
+    async find() {
       this.loading = true
-      await Promise.all([this.$store.dispatch('weapon/load'), this.$wait(1000)])
+      await Promise.all([this.$store.dispatch('weapon/find'), this.$wait(1000)])
       this.loading = false
     },
     goDetail(i) {
