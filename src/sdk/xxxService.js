@@ -13,7 +13,7 @@ export default class {
     }
     return fetchUtil.run(url, options)
   }
-  static loadById(e) {
+  static findById(e) {
     let url = `${site.xxx}/xxx/${e.id}`
     let options = {
       method: 'GET',
@@ -27,7 +27,7 @@ export default class {
     }
     return fetchUtil.run(url, options)
   }
-  static load(filter) {
+  static find(filter) {
     let url = `${site.xxx}/xxx?${paramUtil.createUrlEncode(filter)}`
     let options = {
       method: 'GET',

@@ -19,8 +19,8 @@ const actions = {
     state.list.push({ ...payload, id: rest.data })
     commit('list', state.list)
   },
-  async loadById({ commit, dispatch, state, rootState }, payload, config = {}) {
-    let rest = await service.loadById({ id: payload.id })
+  async findById({ commit, dispatch, state, rootState }, payload, config = {}) {
+    let rest = await service.findById({ id: payload.id })
     if (rest.code !== 'SUCCESS') {
       return
     }
@@ -36,8 +36,8 @@ const actions = {
     }
     commit('total', rest.data)
   },
-  async load({ commit, dispatch, state, rootState }, payload, config = {}) {
-    let rest = await service.load(state.filter)
+  async find({ commit, dispatch, state, rootState }, payload, config = {}) {
+    let rest = await service.find(state.filter)
     if (rest.code !== 'SUCCESS') {
       return
     }

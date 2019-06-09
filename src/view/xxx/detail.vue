@@ -28,11 +28,11 @@ export default {
     centerImage,
   },
   created() {
-    this.loadById()
+    this.findById()
   },
   methods: {
-    async loadById() {
-      this.$store.dispatch('xxx/loadById', { id: this.$route.params.id })
+    async findById() {
+      this.$store.dispatch('xxx/findById', { id: this.$route.params.id })
     },
     goList() {
       this.$router.push({ name: 'xxxList' })

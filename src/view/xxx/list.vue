@@ -21,7 +21,7 @@
 
     </div>
     <div>
-      <button @click="load">reload</button>
+      <button @click="find">reload</button>
       <button @click="reset">reset</button>
       <div>filter.name<input v-model="filter.name" @keyup="changeFilter"></div>
       <div v-if="loading"><loading style="width: 30px; height: 30px;"/></div>
@@ -66,7 +66,7 @@ export default {
   },
   created() {
     this.count()
-    this.load()
+    this.find()
   },
   methods: {
     reset() {
@@ -93,15 +93,15 @@ export default {
     },
     changeFilter() {
       this.$store.dispatch('xxx/changeFilter')
-      this.load()
+      this.find()
       this.count()
     },
     async count() {
       this.$store.dispatch('xxx/count')
     },
-    async load() {
+    async find() {
       this.loading = true
-      await Promise.all([this.$store.dispatch('xxx/load'), this.$wait(1000)])
+      await Promise.all([this.$store.dispatch('xxx/find'), this.$wait(1000)])
       this.loading = false
     },
     goDetail(i) {
