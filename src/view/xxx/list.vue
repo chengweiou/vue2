@@ -26,7 +26,7 @@
       <div>filter.name<input v-model="filter.name" @keyup="changeFilter"></div>
       <div v-if="loading"><loading style="width: 30px; height: 30px;"/></div>
       <div v-else style="display: flex; flex-wrap: wrap;">
-        <article v-for="(e, i) in list" :key="i" @click="goDetail(i)">
+        <article v-for="(e, i) in list" :key="i" @click="goDetail(e)">
           <section style="width: 200px; height: 100px; ">
             <div>{{e.name}}</div>
             <div>{{e.phone | phone}}</div>
@@ -104,8 +104,8 @@ export default {
       await Promise.all([this.$store.dispatch('xxx/find'), this.$wait(1000)])
       this.loading = false
     },
-    goDetail(i) {
-      this.$router.push({ name: 'xxx', params: { id: this.list[i].id } })
+    goDetail(e) {
+      this.$router.push({ name: 'xxx', params: { id: e.id } })
     },
     changeLang() {
       this.$i18n.locale = this.$i18n.locale === 'en' ? 'zh' : 'en'

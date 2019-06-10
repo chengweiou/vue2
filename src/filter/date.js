@@ -11,6 +11,7 @@ export default (e, option) => {
   let from = option.from
   let to = option.to
   let date = new Date(`${transformFrom(e, from)}${option.utc ? 'Z' : ''}`)
+  if (isNaN(date.getTime())) return `Invalid Date: ${e}`
   return transformTo(date, to)
 }
 
