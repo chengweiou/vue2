@@ -42,7 +42,7 @@ const actions = {
     commit('resetFilter', 'REMOVE')
   },
   changeFilter({ commit, dispatch, state, rootState }, payload, config = {}) {
-    commit('filter', state.filter)
+    commit('filter', { ...state.filter, payload })
   },
   async count({ commit, dispatch, state, rootState }, payload, config = {}) {
     let rest = await service.count(state.filter)

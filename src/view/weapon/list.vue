@@ -11,7 +11,7 @@
 
       <div v-if="loading" class="center"><loading style="width: 30px; height: 30px;"/></div>
       <div v-else style="display: flex; flex-wrap: wrap;">
-        <article v-for="(e, i) in list" :key="i" @click="goDetail(i)">
+        <article v-for="(e, i) in list" :key="i" @click="goDetail(e)">
           <section class="btn-white" style="margin-bottom: 10px; margin-right: 10px; width: 200px; height: 100px; border-radius: 3px;">
             <div class="df df-jcsb" style="padding: 10px;">
               <section>
@@ -142,8 +142,8 @@ export default {
       await Promise.all([this.$store.dispatch('weapon/find'), this.$wait(1000)])
       this.loading = false
     },
-    goDetail(i) {
-      this.$router.push({ name: 'weapon', params: { id: this.list[i].id } })
+    goDetail(e) {
+      this.$router.push({ name: 'weapon', params: { id: e.id } })
     },
   },
 }
