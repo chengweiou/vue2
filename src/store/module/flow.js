@@ -18,12 +18,15 @@ const CLEAN_STATE = {
 const state = clone(CLEAN_STATE)
 
 const actions = {
+  setMap({ commit, dispatch, state, rootState }, payload, config = {}) {
+    commit('map', payload)
+  },
   setFirst({ commit, dispatch, state, rootState }, payload, config = {}) {
     commit('first', payload)
     dispatch('reset')
   },
   reset({ commit, dispatch, state, rootState }, payload, config = {}) {
-    state.step = []
+    commit('reset')
     dispatch('next', { curr: { nextNameList: [state.first] }, prevNum: -1 })
   },
   async next({ commit, dispatch, state, rootState }, payload, config = {}) {
@@ -44,8 +47,11 @@ const actions = {
 }
 
 const mutations = {
+  map(state, e) {
+    state.map = clone(e)
+  },
   reset(state, e) {
-    state = clone(CLEAN_STATE)
+    state.step = []
   },
   first(state, e) {
     state.first = e

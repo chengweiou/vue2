@@ -29,17 +29,21 @@ export default {
   },
   computed: {
     step() { return this.$store.state.flow.step },
-    map() { return this.$store.state.flow.map },
+    map() { return this.$store.state.weapon.map },
   },
   created() {
+    this.setMap()
     this.setFirst()
   },
   methods: {
+    setMap() {
+      this.$store.dispatch('flow/setMap', this.map)
+    },
     reset() {
       this.$store.dispatch('flow/reset')
     },
     setFirst() {
-      this.$store.dispatch('flow/setFirst', 'register')
+      this.$store.dispatch('flow/setFirst', 'saveWeapon')
     },
 
     call(e, prevNum) {

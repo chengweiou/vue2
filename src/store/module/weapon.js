@@ -2,6 +2,13 @@ import service from '@/sdk/xxxService'
 import clone from '@/fn/util/clone'
 
 const CLEAN_STATE = {
+  map: {
+    saveWeapon: { nextNameList: ['findByIdWeapon', 'findWeapon'], info: { url: 'POST /weapon/', param: 'name, date, phone' }, action: 'weapon/save' },
+    deleteWeapon: { nextNameList: ['saveWeapon'], info: { url: 'DELETE /weapon/{id}', param: '' }, action: '' },
+    updateWeapon: { nextNameList: ['findByIdWeapon', 'findWeapon'], info: { url: 'PUT /weapon/{id}', param: 'name | date | phone' }, action: 'weapon/update' },
+    findByIdWeapon: { nextNameList: ['deleteWeapon', 'updateWeapon'], info: { url: 'GET /weapon/{id}', param: '' }, action: 'weapon/findById' },
+    findWeapon: { nextNameList: ['deleteWeapon', 'findByIdWeapon'], info: { url: 'GET /weapon', param: 'k?, start?, limit?' }, action: 'weapon/find' },
+  },
 }
 
 const state = clone(CLEAN_STATE)
@@ -22,21 +29,6 @@ const actions = {
 }
 
 const mutations = {
-  reset(state, e) {
-    state = clone(CLEAN_STATE)
-  },
-  detail(state, e) {
-    state.detail = e
-  },
-  total(state, e) {
-    state.total = e
-  },
-  list(state, e) {
-    state.list = e
-  },
-  filter(state, e) {
-    state.filter = e
-  },
 }
 
 export default {
