@@ -31,6 +31,19 @@ button { outline: none; }
 .bg-grey { background: #aaa; }
 .c-grey { color: #aaa; }
 
+.bg-light-grey { background: #ddd; }
+.c-light-grey { color: #ddd; }
+
+.bg-blue { background: #13a; }
+.c-blue { color: #13a; }
+
+.bg-light-blue { background: #6af; }
+.c-light-blue { color: #6af; }
+
+.bg-purple { background: #aaf; }
+.c-purple { color: #aaf; }
+
+
 .f-t1 {
   font-size: 18px;
   font-weight: 500;
@@ -41,6 +54,10 @@ button { outline: none; }
 }
 .f-t3 {
   font-weight: 400;
+}
+
+.f-c {
+  font-size: 12px;
 }
 
 
