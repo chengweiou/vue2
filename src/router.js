@@ -7,7 +7,7 @@ export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
-    { name: 'home', path: '/', component: () => import('@/view/flow/list') },
+    { name: 'home', path: '/', component: () => import('@/view/home') },
     { name: 'weapon', path: '/weapon', component: () => import('@/view/weapon') },
     { name: 'login', path: '/login', component: () => import('@/view/login') },
     { name: 'xxxList', path: '/xxx', component: () => import('@/view/xxx/list') },

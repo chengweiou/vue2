@@ -3,13 +3,6 @@ import clone from '@/fn/util/clone'
 const CLEAN_STATE = {
   cache: false,
   map: {
-    register: { nextNameList: ['login', 'saveWeapon'], info: { url: 'POST /andromeda/register', param: 'username, password' }, action: '' },
-    login: { nextNameList: ['saveWeapon'], info: { url: 'POST /andromeda/login', param: 'username, password' }, action: '' },
-    saveWeapon: { nextNameList: ['findByIdWeapon', 'findWeapon'], info: { url: 'POST /weapon/', param: 'name, date, phone' }, action: 'weapon/save' },
-    deleteWeapon: { nextNameList: ['saveWeapon'], info: { url: 'DELETE /weapon/{id}', param: '' }, action: '' },
-    updateWeapon: { nextNameList: ['findByIdWeapon', 'findWeapon'], info: { url: 'PUT /weapon/{id}', param: 'name | date | phone' }, action: 'weapon/update' },
-    findByIdWeapon: { nextNameList: ['deleteWeapon', 'updateWeapon'], info: { url: 'GET /weapon/{id}', param: '' }, action: 'weapon/findById' },
-    findWeapon: { nextNameList: ['deleteWeapon', 'findByIdWeapon'], info: { url: 'GET /weapon', param: 'k?, start?, limit?' }, action: 'weapon/find' },
   },
   step: [],
   first: '',

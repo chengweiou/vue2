@@ -1,5 +1,5 @@
 <template>
-  <main class="center df-column" style="">
+  <div class="center df-column" style="">
     <div v-for="(currList, si) in step" :key="`s${si}`" class="df">
       <label v-for="(e, i) in currList" :key="i">
         <article class="df df-column card" style="width: 200px; border-radius: 10px; overflow: hidden;" :class="{'active': e.active}" @click="call(e, si)">
@@ -18,7 +18,7 @@
       </label>
     </div>
     <button class="bg-white btn-reset" style="width: 50px; height: 50px; border-radius: 50%; position: fixed; top: 20px; right: 20px;" @click="reset">reset</button>
-  </main>
+  </div>
 </template>
 
 <script>
@@ -30,16 +30,23 @@ export default {
   computed: {
     step() { return this.$store.state.flow.step },
     map() { return this.$store.state.flow.map },
+    first() { return this.$store.state.flow.first },
   },
   created() {
-    this.setFirst()
+    this.checkState()
   },
   methods: {
+    checkState() {
+      if (!Object.keys(this.map).length || !this.first) {
+        console.log('need to set up: flow map && first node to flow store')
+        return
+      }
+      if (!this.map[this.first]) {
+        console.log('need to confirm: can not find first node in flow map')
+      }
+    },
     reset() {
       this.$store.dispatch('flow/reset')
-    },
-    setFirst() {
-      this.$store.dispatch('flow/setFirst', 'register')
     },
 
     call(e, prevNum) {
