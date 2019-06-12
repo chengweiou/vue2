@@ -4,9 +4,10 @@ import clone from '@/fn/util/clone'
 const CLEAN_STATE = {
   cache: false,
   map: {
-    register: { nextNameList: ['login'], info: { url: 'POST /andromeda/register', param: 'username, password' }, action: '' },
-    login: { nextNameList: ['logout'], info: { url: 'POST /andromeda/login', param: 'username, password' }, action: '' },
-    logout: { nextNameList: ['register', 'login'], info: { url: 'POST /andromeda/logout', param: 'refreshToken' }, action: '' },
+    init: { nextNameList: ['register'] },
+    register: { desc: '注册', nextNameList: ['login'], dev: { url: 'POST /andromeda/register', param: 'username, password' }, action: '' },
+    login: { desc: '登录', nextNameList: ['logout'], dev: { url: 'POST /andromeda/login', param: 'username, password' }, action: '' },
+    logout: { desc: '登出', nextNameList: ['register', 'login'], dev: { url: 'POST /andromeda/logout', param: 'refreshToken' }, action: '' },
   },
 }
 

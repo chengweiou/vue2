@@ -5,14 +5,15 @@ const CLEAN_STATE = {
   map: {
   },
   step: [],
-  first: '',
+  first: 'init',
 }
 
 const state = clone(CLEAN_STATE)
 
 const actions = {
-  setMap({ commit, dispatch, state, rootState }, payload, config = {}) {
-    commit('map', payload)
+  init({ commit, dispatch, state, rootState }, payload, config = {}) {
+    commit('map', payload || state.first)
+    dispatch('reset')
   },
   setFirst({ commit, dispatch, state, rootState }, payload, config = {}) {
     commit('first', payload)
@@ -27,14 +28,15 @@ const actions = {
     let curr = payload.curr
     let currList = []
     state.step.length = prevNum + 1
-    curr.nextNameList.forEach(name => {
+    curr.nextNameList.filter(name => name).forEach(name => {
       let cp = clone(state.map[name])
-      currList.push({ name: name, ...cp })
+      cp.desc = cp.desc ? `: ${cp.desc}` : ''
+      currList.push({ name: `${name}${cp.desc}`, dev: {}, ...cp })
     })
     state.step.push(currList)
     if (curr.action) {
       let rest = await dispatch(curr.action, {}, { root: true })
-      curr.info.result = rest
+      curr.dev.result = rest
     }
   },
 }

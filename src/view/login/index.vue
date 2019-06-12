@@ -16,15 +16,11 @@ export default {
     flow,
   },
   created() {
-    this.setMap()
-    this.setFirst()
+    this.init()
   },
   methods: {
-    setMap() {
-      this.$store.dispatch('flow/setMap', this.map)
-    },
-    setFirst() {
-      this.$store.dispatch('flow/setFirst', 'login')
+    init() {
+      this.$store.dispatch('flow/init', this.map)
     },
   },
 }

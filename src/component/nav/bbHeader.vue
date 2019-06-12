@@ -4,7 +4,7 @@
       <section class="center pointer" style="margin-right: 30px;" @click="go('home')"><img style="width: 30px; height: 30px;" src="@/assets/img/logo.png"></section>
       <div class="df df-jcsb ">
         <section class="center pointer link" style="margin-right: 30px;" @click="go('login')">login</section>
-        <section class="center pointer link" style="margin-right: 30px;" @click="go('weapon')">weapons</section>
+        <section class="center pointer link" style="margin-right: 30px;" @click="go('weapon')">weapon</section>
       </div>
 
     </div>
