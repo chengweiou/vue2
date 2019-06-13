@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     setMap() {
-      this.$store.dispatch('flow/setMap', this.map)
+      this.$store.dispatch('flow/init', this.map)
     },
   },
 }

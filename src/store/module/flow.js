@@ -29,9 +29,10 @@ const actions = {
     let currList = []
     state.step.length = prevNum + 1
     curr.nextNameList.filter(name => name).forEach(name => {
+      if (!state.map[name]) console.log(`can not find map: ${curr.name} --> ${name}`)
       let cp = clone(state.map[name])
-      cp.desc = cp.desc ? `: ${cp.desc}` : ''
-      currList.push({ name: `${name}${cp.desc}`, dev: {}, ...cp })
+      cp.desc = cp.desc || name
+      currList.push({ name: name, dev: {}, ...cp })
     })
     state.step.push(currList)
     if (curr.action) {

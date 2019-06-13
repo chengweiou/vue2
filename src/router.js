@@ -6,12 +6,22 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: [
-    { name: 'home', path: '/', component: () => import('@/view/home') },
-    { name: 'weapon', path: '/weapon', component: () => import('@/view/weapon') },
-    { name: 'login', path: '/login', component: () => import('@/view/login') },
-    { name: 'xxxList', path: '/xxx', component: () => import('@/view/xxx/list') },
-    { name: 'xxx', path: '/xxx/:id', component: () => import('@/view/xxx/detail') },
-    { name: 'log', path: '/log', component: () => import('@/view/log') },
-  ],
+  routes: routeList(),
 })
+function routeList() {
+  const result = [
+    /**
+     * default: { name: ':folderName', path: '/:folderName', component: () => import('@/view/:folderName/index.vue')
+     * write down specification config in here.
+     */
+    { name: 'home', path: '/', component: () => import('@/view/home') },
+  ]
+  const list = require.context('./view', true, /[A-Za-z0-9-_,\s]+\.vue$/i)
+  list.keys().filter(e => e.includes('index')).forEach(e => {
+    const matched = e.match(/([A-Za-z0-9-_]+)\/index\./i)
+    if (!matched || matched.length <= 1) return
+    if (result.find(e => e.name === matched[1])) return
+    result.push({ name: matched[1], path: `/${matched[1]}`, component: list(e).default })
+  })
+  return result
+}
