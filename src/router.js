@@ -15,13 +15,14 @@ function routeList() {
      * write down specification config in here.
      */
     { name: 'home', path: '/', component: () => import('@/view/home') },
+    { name: 'log', path: '/log', component: () => import('@/view/log') },
   ]
   const list = require.context('./view', true, /[A-Za-z0-9-_,\s]+\.vue$/i)
   list.keys().filter(e => e.includes('index')).forEach(e => {
     const matched = e.match(/([A-Za-z0-9-_]+)\/index\./i)
     if (!matched || matched.length <= 1) return
     if (result.find(e => e.name === matched[1])) return
-    result.push({ name: matched[1], path: `/${matched[1]}`, component: list(e).default })
+    result.push({ name: matched[1], path: `/${matched[1]}`, component: list(e).default, meta: { module: true } })
   })
   return result
 }

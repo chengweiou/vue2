@@ -2,20 +2,22 @@
   <div class="center df-column" style="">
     <div v-for="(currList, si) in step" :key="`s${si}`" class="df">
       <label v-for="(e, i) in currList" :key="i">
-        <article class="df df-column card" style="width: 200px; border-radius: 10px; overflow: hidden;" :class="{'active': e.active}" @click="call(e, si)">
-          <div class="center" style="width: 100%;"><div style="width: 90%; height: 20px; font-size: 12px;">{{e.name}}</div></div>
-          <div class="center f-t2 " style="width: 100%;" :class="{'active': e.active}" :title="e.desc" >
-            <div class="desc" style="" :class="{'active': e.active}">{{e.desc}}</div>
-          </div>
-          <div class="center">
-            <input class="dev-rdo" type="radio" name="devRdo">
-            <div class="df df-column" style="width: 100%;">
-              <div class="center c-light-blue" style="">{{e.dev.url}}</div>
-              <div class="center c-light-blue" style="">{{e.dev.param}}</div>
-              <div v-if="e.dev.result" class="center df-column c-purple" style="width: 100%; border-top: 1px solid #ccf;">
-                {{e.dev.result}}
+        <article class="center card" style="" :class="{'active': e.active}">
+          <div class="df df-column" style="margin: 2px; width: 100%;" @click="call(e, si)">
+            <section class="center" style="width: 100%;"><div style="width: 90%; height: 20px; font-size: 12px;">{{e.name}}</div></section>
+            <section class="center f-t2 " style="width: 100%;" :class="{'active': e.active}" :title="e.desc" >
+              <div class="desc" style="" :class="{'active': e.active}">{{e.desc}}</div>
+            </section>
+            <section class="center">
+              <input class="dev-rdo" type="radio" name="devRdo">
+              <div class="df df-column" style="width: 100%;">
+                <div class="center c-light-blue" style="">{{e.dev.url}}</div>
+                <div class="center c-light-blue" style="">{{e.dev.param}}</div>
+                <div v-if="e.dev.result" class="center df-column c-purple" style="width: 100%; border-top: 1px solid #ccf;">
+                  {{e.dev.result}}
+                </div>
               </div>
-            </div>
+            </section>
           </div>
         </article>
       </label>
@@ -68,10 +70,10 @@ export default {
 .dev-rdo:checked ~ div { max-height: 500px; }
 .dev-rdo:hover ~ div { max-height: 500px; transition: max-height .5s ease-in-out; }
 
-.card { background: #666; border: 1px solid #888; color: #888; }
+.card { width: 200px; border-radius: 10px; overflow: hidden; background: #666; border: 1px solid #888; color: #888; }
 .card.active { background: #444; border: 1px solid #fff; color: #ddd; }
 
-.desc { margin: 0 5px 20px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.desc { margin-bottom: 20px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .desc.active { white-space: normal; }
 .btn-reset:hover { transform: scale(1.2); transition: all .5s ease-in-out; }
 </style>
