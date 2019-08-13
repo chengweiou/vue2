@@ -36,7 +36,7 @@ const actions = {
     })
     state.step.push(currList)
     if (curr.action) {
-      let rest = await dispatch(curr.action, {}, { root: true })
+      let rest = await dispatch(curr.action, curr.dev.param, { root: true })
       curr.dev.result = rest
     }
   },
