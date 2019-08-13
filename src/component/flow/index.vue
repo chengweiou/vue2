@@ -3,13 +3,13 @@
     <div v-for="(currList, si) in step" :key="`s${si}`" class="df">
       <label v-for="(e, i) in currList" :key="i">
         <article class="center card" style="" :class="{'active': e.active}">
-          <div class="df df-column" style="margin: 2px; width: 100%;" @click="call(e, si)">
+          <div class="df df-column" style="margin: 2px; width: 100%;">
             <section class="center" style="width: 100%;"><div style="width: 90%; height: 20px; font-size: 12px;">{{e.name}}</div></section>
             <section class="center f-t2 " style="width: 100%;" :class="{'active': e.active}" :title="e.desc" >
               <div class="desc" style="" :class="{'active': e.active}">{{e.desc}}</div>
             </section>
             <section class="center">
-              <input class="dev-rdo" type="radio" name="devRdo">
+              <input class="dev-rdo" type="radio" name="devRdo" @click="call(e, si)">
               <div class="df df-column" style="width: 100%;">
                 <div class="center c-light-blue" style="">{{e.dev.url}}</div>
                 <div class="center c-light-blue" style="">{{e.dev.param}}</div>
