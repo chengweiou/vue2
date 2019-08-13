@@ -11,7 +11,7 @@ const CLEAN_STATE = {
     delete: { desc: '', nextNameList: [''], dev: { url: 'DELETE /weapon/{id}', param: {} }, action: '' },
     update: { desc: '', nextNameList: [''], dev: { url: 'PUT /weapon/{id}', param: { name: 'chikage2' } }, action: 'weapon/update' },
     findById: { desc: '', nextNameList: ['update'], dev: { url: 'GET /weapon/{id}', param: {} }, action: 'weapon/findById' },
-    find: { desc: '查找列表，可以拿到id，直接调用删除功能。 其实这里写这么多，只是希望吧内容加长，看看效果', nextNameList: ['save', 'delete', 'findById'], dev: { url: 'GET /weapon', param: { k: '' } }, action: 'weapon/find' },
+    find: { desc: '查找列表，可以拿到id，直接调用删除功能。 其实这里写这么多，只是希望吧内容加长，看看效果', nextNameList: ['save', 'delete', 'findById'], dev: { url: 'GET /weapon', param: { k: '', limit: 10, skip: 0 } }, action: 'weapon/find' },
   },
   data: { id: '' },
 }
@@ -40,11 +40,11 @@ const actions = {
     return rest
   },
   async count({ commit, dispatch, state, rootState }, payload, config = {}) {
-    let rest = await service.count({})
+    let rest = await service.count(payload)
     return rest
   },
   async find({ commit, dispatch, state, rootState }, payload, config = {}) {
-    let rest = await service.find({})
+    let rest = await service.find(payload)
     state.data.id = rest.data[0].id
     return rest
   },
