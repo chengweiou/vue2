@@ -36,7 +36,7 @@ const actions = {
   },
   async findById({ commit, dispatch, state, rootState }, payload, config = {}) {
     payload.id = state.data.id
-    let rest = await service.findById({})
+    let rest = await service.findById(payload)
     return rest
   },
   async count({ commit, dispatch, state, rootState }, payload, config = {}) {
