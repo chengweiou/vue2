@@ -42,11 +42,11 @@ export default class {
       if (!matchList.length) {
         let msg = `${options.method} ${url}  ---> cannot find match data`
         console.log(msg)
-        resolve({ code: 'SUCCESS', msg: msg })
+        resolve({ code: 'OK', msg: msg })
         return
       }
       matchList.sort((a, b) => a.split('/:').length - b.split('/:').length)
-      resolve({ code: 'SUCCESS', data: dataMap[matchList[0]] })
+      resolve({ code: 'OK', data: dataMap[matchList[0]] })
     })
   }
 }
