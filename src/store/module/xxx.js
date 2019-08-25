@@ -13,7 +13,7 @@ const state = clone(CLEAN_STATE)
 const actions = {
   async save({ commit, dispatch, state, rootState }, payload, config = {}) {
     let rest = await service.save(payload)
-    if (rest.code !== 'SUCCESS') {
+    if (rest.code !== 'OK') {
       return
     }
     state.list.push({ ...payload, id: rest.data })
@@ -21,7 +21,7 @@ const actions = {
   },
   async findById({ commit, dispatch, state, rootState }, payload, config = {}) {
     let rest = await service.findById({ id: payload.id })
-    if (rest.code !== 'SUCCESS') {
+    if (rest.code !== 'OK') {
       return
     }
     commit('detail', rest.data)
@@ -31,14 +31,14 @@ const actions = {
   },
   async count({ commit, dispatch, state, rootState }, payload, config = {}) {
     let rest = await service.count(state.filter)
-    if (rest.code !== 'SUCCESS') {
+    if (rest.code !== 'OK') {
       return
     }
     commit('total', rest.data)
   },
   async find({ commit, dispatch, state, rootState }, payload, config = {}) {
     let rest = await service.find(state.filter)
-    if (rest.code !== 'SUCCESS') {
+    if (rest.code !== 'OK') {
       return
     }
     commit('list', rest.data)
