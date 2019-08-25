@@ -14,14 +14,14 @@ const state = clone(CLEAN_STATE)
 const actions = {
   async save({ commit, dispatch, state, rootState }, payload, config = {}) {
     let rest = await uploadService.save({ file: payload.img })
-    if (rest.code !== 'SUCCESS') {
+    if (rest.code !== 'OK') {
       dispatch('failBox/onRest', rest, { root: true })
       return
     }
     payload.imgSrc = rest.data
     payload.img = ''
     rest = await service.save(payload)
-    if (rest.code !== 'SUCCESS') {
+    if (rest.code !== 'OK') {
       dispatch('failBox/onRest', rest, { root: true })
       return
     }
@@ -32,7 +32,7 @@ const actions = {
   },
   async findById({ commit, dispatch, state, rootState }, payload, config = {}) {
     let rest = await service.findById({ id: payload.id })
-    if (rest.code !== 'SUCCESS') {
+    if (rest.code !== 'OK') {
       dispatch('failBox/onRest', rest, { root: true })
       return
     }
@@ -46,7 +46,7 @@ const actions = {
   },
   async count({ commit, dispatch, state, rootState }, payload, config = {}) {
     let rest = await service.count(state.filter)
-    if (rest.code !== 'SUCCESS') {
+    if (rest.code !== 'OK') {
       dispatch('failBox/onRest', rest, { root: true })
       return
     }
@@ -54,7 +54,7 @@ const actions = {
   },
   async find({ commit, dispatch, state, rootState }, payload, config = {}) {
     let rest = await service.find(state.filter)
-    if (rest.code !== 'SUCCESS') {
+    if (rest.code !== 'OK') {
       dispatch('failBox/onRest', rest, { root: true })
       return
     }

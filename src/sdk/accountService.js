@@ -13,7 +13,7 @@ export default class accountService {
       body: formData,
     }
     return fetchUtil.run(url, options).then(rest => {
-      if (rest.code !== 'SUCCESS') return rest
+      if (rest.code !== 'OK') return rest
       storage.set('token', rest.data.token)
       storage.set('refreshToken', rest.data.refreshToken)
       this.keepLogin()
@@ -46,7 +46,7 @@ export default class accountService {
       body: formData,
     }
     return fetchUtil.run(url, options).then(rest => {
-      if (rest.code !== 'SUCCESS') return rest
+      if (rest.code !== 'OK') return rest
       storage.set('token', rest.data.token)
       storage.set('refreshToken', rest.data.refreshToken)
       this.keepLogin()
