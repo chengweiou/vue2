@@ -37,6 +37,7 @@
 
 <script>
 import loading from '@/component/loading'
+import clone from '@/fn/util/clone'
 import centerImage from '@/component/image/centerImage'
 export default {
   data() {
@@ -64,7 +65,7 @@ export default {
     },
     onUpdate() {
       this.showUpdate = true
-      this.form = this.detail
+      this.form = clone(this.detail)
     },
     offUpdate() {
       this.showUpdate = false
@@ -75,6 +76,7 @@ export default {
       this.updateLoading = false
       if (!pList[0]) return
       this.showUpdate = false
+      this.detail = clone(this.form)
     },
   },
 }
