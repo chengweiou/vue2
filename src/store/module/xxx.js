@@ -25,6 +25,7 @@ const actions = {
       dispatch('failBox/onRest', rest, { root: true })
       return false
     }
+    commit('detail', payload)
     return true
   },
   async findById({ commit, dispatch, state, rootState }, payload, config = {}) {
@@ -34,8 +35,11 @@ const actions = {
     }
     commit('detail', rest.data)
   },
+  resetFilter({ commit, dispatch, state, rootState }, payload, config = {}) {
+    commit('resetFilter', 'REMOVE')
+  },
   changeFilter({ commit, dispatch, state, rootState }, payload, config = {}) {
-    commit('filter', { ...state.filter, payload })
+    commit('filter', { ...state.filter, ...payload })
   },
   async count({ commit, dispatch, state, rootState }, payload, config = {}) {
     // can work on temp search
@@ -68,11 +72,12 @@ const mutations = {
   total(state, e) {
     state.total = e
   },
+  resetFilter(state, e) {
+    state.filter = { ...clone(CLEAN_STATE).filter }
+    state.list = []
+  },
   list(state, e) {
     state.list = e
-  },
-  filter(state, e) {
-    state.filter = e
   },
 }
 
