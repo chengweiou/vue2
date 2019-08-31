@@ -23,7 +23,7 @@
     <div>
       <button @click="find">reload</button>
       <button @click="reset">reset</button>
-      <div>filter.name<input v-model="filter.name" @keyup="changeFilter"></div>
+      <div>filter.k<input v-model="filter.k" @keyup="changeFilter"></div>
       <div v-if="loading"><loading style="width: 30px; height: 30px;"/></div>
       <div v-else style="display: flex; flex-wrap: wrap;">
         <article v-for="(e, i) in list" :key="i" @click="goDetail(e)">
