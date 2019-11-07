@@ -16,7 +16,6 @@ module.exports = {
     'comma-dangle': ['error', 'always-multiline'],
     // allow debugger during development
     'no-tabs': 0,
-    "no-unused-vars": ["warn", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
   },
   parserOptions: {
     parser: 'babel-eslint',
