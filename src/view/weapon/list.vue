@@ -33,45 +33,48 @@
       <section class="df center">total: {{total}}</section>
     </div>
     <modal>
-      <div slot="v" class="bg-black center" style="width: 300px;">
-        <div style="width: 80%; height: 80%;">
-          <div class="center f-t1" style="margin: 20px 0;">Create Weapon</div>
-          <div style="margin-bottom: 20px;">
-            <section class="df df-aic" style="margin-bottom: 10px;">
-              <div style="margin-right: 10px; width: 50px;">name:</div>
-              <div class="" style="width: 150px; height: 20px; border: 1px solid #ddd;"><div style="margin: 0 10px;"><input style="width: 100%; background: transparent; border: 0; color: #ddd;" v-model="form.name"></div></div>
+      <template>
+        <div class="bg-black center" style="width: 300px;">
+          <div style="width: 80%; height: 80%;">
+            <div class="center f-t1" style="margin: 20px 0;">Create Weapon</div>
+            <div style="margin-bottom: 20px;">
+              <section class="df df-aic" style="margin-bottom: 10px;">
+                <div style="margin-right: 10px; width: 50px;">name:</div>
+                <div class="" style="width: 150px; height: 20px; border: 1px solid #ddd;"><div style="margin: 0 10px;"><input style="width: 100%; background: transparent; border: 0; color: #ddd;" v-model="form.name"></div></div>
+              </section>
+              <div class="df">
+                <section class="df df-aic" style="margin-bottom: 10px; width: 100px;">
+                  <div style="margin-right: 10px; ">phy:</div>
+                  <div class="" style="width: 50px; height: 20px; border: 1px solid #ddd;"><div style="margin: 0 10px;"><input style="width: 100%; background: transparent; border: 0; color: #ddd;" v-model="form.phy"></div></div>
+                </section>
+                <section class="df df-aic" style="margin-bottom: 10px; width: 100px;">
+                  <div style="margin-right: 10px; ">bld:</div>
+                  <div class="" style="width: 50px; height: 20px; border: 1px solid #ddd;"><div style="margin: 0 10px;"><input style="width: 100%; background: transparent; border: 0; color: #ddd;" v-model="form.bld"></div></div>
+                </section>
+              </div>
+              <div class="df df-aic" style="margin-bottom: 10px;">
+                <section style="width: 100px; height: 100px; cursor: pointer;">
+                  <label v-if="form.img" style="width: 100%; height: 100%; display: block;">
+                    <centerImage :src="form.img"/>
+                    <input type="file" style="display: none;" @change="readPic()">
+                  </label>
+                  <label v-else class="center btn-white" style="width: 100%; height: 100%;">
+                    Image <input style="display: none;" type="file" @change="readPic()" >
+                  </label>
+                </section>
+              </div>
+            </div>
+            <section class="center" style="margin-bottom: 10px;">
+              <div v-if="loading" class="center" style="width: 100%;"><loading style="width: 30px; height: 30px;"/></div>
+              <div v-else class="df df-jcsb" style="width: 100%;">
+                <button class="btn-white" style="width: 100px; height: 30px;" @click="save">Save</button>
+                <button class="btn-white" style="width: 100px; height: 30px;" @click="offSave">Cancel</button>
+              </div>
             </section>
-            <div class="df">
-              <section class="df df-aic" style="margin-bottom: 10px; width: 100px;">
-                <div style="margin-right: 10px; ">phy:</div>
-                <div class="" style="width: 50px; height: 20px; border: 1px solid #ddd;"><div style="margin: 0 10px;"><input style="width: 100%; background: transparent; border: 0; color: #ddd;" v-model="form.phy"></div></div>
-              </section>
-              <section class="df df-aic" style="margin-bottom: 10px; width: 100px;">
-                <div style="margin-right: 10px; ">bld:</div>
-                <div class="" style="width: 50px; height: 20px; border: 1px solid #ddd;"><div style="margin: 0 10px;"><input style="width: 100%; background: transparent; border: 0; color: #ddd;" v-model="form.bld"></div></div>
-              </section>
-            </div>
-            <div class="df df-aic" style="margin-bottom: 10px;">
-              <section style="width: 100px; height: 100px; cursor: pointer;">
-                <label v-if="form.img" style="width: 100%; height: 100%; display: block;">
-                  <centerImage :src="form.img"/>
-                  <input type="file" style="display: none;" @change="readPic()">
-                </label>
-                <label v-else class="center btn-white" style="width: 100%; height: 100%;">
-                  Image <input style="display: none;" type="file" @change="readPic()" >
-                </label>
-              </section>
-            </div>
           </div>
-          <section class="center" style="margin-bottom: 10px;">
-            <div v-if="loading" class="center" style="width: 100%;"><loading style="width: 30px; height: 30px;"/></div>
-            <div v-else class="df df-jcsb" style="width: 100%;">
-              <button class="btn-white" style="width: 100px; height: 30px;" @click="save">Save</button>
-              <button class="btn-white" style="width: 100px; height: 30px;" @click="offSave">Cancel</button>
-            </div>
-          </section>
         </div>
-      </div>
+      </template>
+      
     </modal>
   </main>
 </template>

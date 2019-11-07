@@ -1,6 +1,6 @@
 <template>
   <div v-if="show" class="center" style="width: 100%; height: 100%; background: rgba(255, 255, 255, .3); position: fixed; top: 0; left: 0;" >
-    <slot name="v"></slot>
+    <slot></slot>
   </div>
 </template>
 <script>

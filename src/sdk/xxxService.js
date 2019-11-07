@@ -16,6 +16,14 @@ export default class {
     }
     return fetchUtil.run(url, options)
   }
+  static update(e) {
+    let url = `${site.xxx}/xxx/${e.id}`
+    let options = {
+      method: 'PUT',
+      body: e,
+    }
+    return fetchUtil.run(url, options)
+  }
   static findById(e) {
     let url = `${site.xxx}/xxx/${e.id}`
     let options = {

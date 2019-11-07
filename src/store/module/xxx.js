@@ -3,7 +3,7 @@ import clone from '@/fn/util/clone'
 
 const CLEAN_STATE = {
   total: 0,
-  filter: { name: '', start: 0, limit: 0 },
+  filter: { k: '', skip: 0, limit: 10 },
   list: [],
   detail: {},
 }
@@ -19,6 +19,15 @@ const actions = {
     state.list.push({ ...payload, id: rest.data })
     commit('list', state.list)
   },
+  async update({ commit, dispatch, state, rootState }, payload, config = {}) {
+    let rest = await service.update(payload)
+    if (rest.code !== 'OK') {
+      dispatch('failBox/onRest', rest, { root: true })
+      return false
+    }
+    commit('detail', payload)
+    return true
+  },
   async findById({ commit, dispatch, state, rootState }, payload, config = {}) {
     let rest = await service.findById({ id: payload.id })
     if (rest.code !== 'OK') {
@@ -26,18 +35,23 @@ const actions = {
     }
     commit('detail', rest.data)
   },
+  resetFilter({ commit, dispatch, state, rootState }, payload, config = {}) {
+    commit('resetFilter', 'REMOVE')
+  },
   changeFilter({ commit, dispatch, state, rootState }, payload, config = {}) {
-    commit('filter', { ...state.filter, payload })
+    commit('filter', { ...state.filter, ...payload })
   },
   async count({ commit, dispatch, state, rootState }, payload, config = {}) {
-    let rest = await service.count(state.filter)
+    // can work on temp search
+    let rest = await service.count({ ...state.filter, ...payload })
     if (rest.code !== 'OK') {
       return
     }
     commit('total', rest.data)
   },
   async find({ commit, dispatch, state, rootState }, payload, config = {}) {
-    let rest = await service.find(state.filter)
+    // can work on temp search
+    let rest = await service.find({ ...state.filter, ...payload })
     if (rest.code !== 'OK') {
       return
     }
@@ -58,11 +72,12 @@ const mutations = {
   total(state, e) {
     state.total = e
   },
+  resetFilter(state, e) {
+    state.filter = { ...clone(CLEAN_STATE).filter }
+    state.list = []
+  },
   list(state, e) {
     state.list = e
-  },
-  filter(state, e) {
-    state.filter = e
   },
 }
 
