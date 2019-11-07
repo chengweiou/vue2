@@ -27,7 +27,7 @@ export default class {
   }
 
   static async runPredev(url, options) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       let matchList = []
       Object.keys(dataMap).map(k => {
         let method = k.substring(0, k.indexOf(' '))
@@ -41,12 +41,12 @@ export default class {
       })
       if (!matchList.length) {
         let msg = `${options.method} ${url}  ---> cannot find match data`
-        console.log(msg)
-        resolve({ code: 'SUCCESS', msg: msg })
+        console.error(msg)
+        resolve({ code: 'OK', msg: msg })
         return
       }
       matchList.sort((a, b) => a.split('/:').length - b.split('/:').length)
-      resolve({ code: 'SUCCESS', data: dataMap[matchList[0]] })
+      resolve({ code: 'OK', data: dataMap[matchList[0]] })
     })
   }
 }

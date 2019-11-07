@@ -12,7 +12,11 @@ export default class {
     return formData
   }
   static createUrlEncode(e, father) {
-    return Object.keys(e).filter(k => e[k] || e[k] === 0).map(k => {
+    return Object.keys(e).filter(k => {
+      if (Array.prototype.isPrototypeOf(e[k])) return e[k].length
+      if (Object.prototype.isPrototypeOf(e[k])) return Object.keys(e[k]).length
+      return e[k] || e[k] === 0
+    }).map(k => {
       let name = father ? `${father}.${k}` : `${k}`
       return e[k].constructor === Object ? this.createUrlEncode(e[k], k) : `${name}=${e[k]}`
     }).join('&')

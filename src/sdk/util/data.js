@@ -1,10 +1,13 @@
 export default {
-  'POST /xxx': 4,
-  'GET /xxx/:id': { id: 2, name: 'bbb', date: '2019-02-03', phone: '9876543211', vote: 587 },
-  'GET /xxx/count': 3,
-  'GET /xxx': [
-    { id: 1, name: 'aaa', date: '2019-01-01', phone: '9876543210', vote: 58521 },
-    { id: 2, name: 'bbb', date: '2019-02-03', phone: '9876543211', vote: 587 },
-    { id: 3, name: 'ccc', date: '2019-04-01', phone: '9876543212', vote: 2085 },
+  'POST /login': { user: { name: 'chengwei' }, token: 'alksdjfkljsadlf', refreshToken: 'aoivjioamweiwaopeif' },
+  'POST /logout': null,
+  'POST /token/refresh': { token: 'alksdjfkljsadlf', refreshToken: 'aoivjioamweiwaopeif' },
+  'POST /upload': '/upload/weapon/aaa.png',
+  'POST /weapon': 4,
+  'GET /weapon/:id': { id: 1, name: 'Chikage', phy: 92, bld: 92, createAt: '2019-02-03' },
+  'GET /weapon/count': 2,
+  'GET /weapon': [
+    { id: 1, name: 'Chikage', phy: 92, bld: 92, createAt: '2019-02-03' },
+    { id: 2, name: 'Rakuyo', phy: 82, bld: 0, createAt: '2019-02-04' },
   ],
 }

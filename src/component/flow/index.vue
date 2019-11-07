@@ -43,11 +43,11 @@ export default {
   methods: {
     checkState() {
       if (!Object.keys(this.map).length || !this.first) {
-        console.log('need to set up: flow map && first node to flow store')
+        console.warn('need to set up: flow map && first node to flow store')
         return
       }
       if (!this.map[this.first]) {
-        console.log('need to confirm: can not find first node in flow map')
+        console.warn('need to confirm: can not find first node in flow map')
       }
     },
     reset() {
