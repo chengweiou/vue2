@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import loading from '@/component/loading'
 import clone from '@/fn/util/clone'
 import centerImage from '@/component/image/centerImage'
 export default {

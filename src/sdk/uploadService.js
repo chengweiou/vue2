@@ -4,7 +4,7 @@ import site from './config/site'
 export default class {
   static save(e) {
     if (!e.file) {
-      console.log('参数 file: ' + e.file + ', 不正确')
+      console.error('uploadService file: ' + e.file + ', not found')
       return
     }
     let url = `${site.xxx}/upload`
