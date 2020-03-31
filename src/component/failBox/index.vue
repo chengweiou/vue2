@@ -1,6 +1,9 @@
 <template>
-  <div v-if="show" class="center" style="width: 100%; height: 100%; background: rgba(0, 0, 0, .3); position: fixed; top: 0;  z-index: 1;" @click="off">
-    <el-alert type="error" :title="name" :description="content" center effect="dark" show-icon :closable="false"></el-alert>
+  <div v-if="show" class="center" style="width: 100%; height: 100%; background: rgba(255, 255, 255, .3); position: fixed; top: 0;  z-index: 1;" @click="off">
+    <div class="bg-black center df-column" style="width: 400px; height: 120px;">
+      <div >{{name}}</div>
+      <div >{{content}}</div>
+    </div>
   </div>
 </template>
 <script>
