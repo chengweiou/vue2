@@ -14,6 +14,8 @@ module.exports = {
     'generator-star-spacing': 'off',
     'space-before-function-paren': ['error', 'never'],
     'comma-dangle': ['error', 'always-multiline'],
+    'semi': ['error', 'never'],
+    'no-unused-vars': 'warn',
     // allow debugger during development
     'no-tabs': 0,
     'no-trailing-spaces': 'error',

@@ -29,6 +29,7 @@ export default class {
   static async runPredev(url, options) {
     return new Promise((resolve) => {
       let matchList = []
+      let param = url.substring(url.indexOf('?'))
       Object.keys(dataMap).map(k => {
         let method = k.substring(0, k.indexOf(' '))
         if (method !== options.method) return
@@ -45,8 +46,31 @@ export default class {
         resolve({ code: 'OK', msg: msg })
         return
       }
-      matchList.sort((a, b) => a.split('/:').length - b.split('/:').length)
-      resolve({ code: 'OK', data: dataMap[matchList[0]] })
+      matchList.sort((a, b) => {
+        let paramAz = a.split('/:').length - b.split('/:').length
+        let slashAz = a.split('/').length - b.split('/').length
+        if (!slashAz && !paramAz) {
+          let aRegularList = a.url.split('/')
+          let bRegularList = b.url.split('/')
+          for (let i=0; i<aRegularList.length; i++) {
+            if (aRegularList[i] == bRegularList[i]) continue
+            // regular word more
+            return bRegularList[i].length - aRegularList[i].length
+          }
+        }
+        return slashAz ?  -1 * slashAz : paramAz
+      })
+      let data = dataMap[matchList[0]]
+      let limit = this.getLimit(param)
+      if (limit && data.length > limit) data.length = limit
+      resolve({ code: 'OK', data: data })
     })
+  }
+  static getLimit(param) {
+    let limitStart = param.indexOf('limit=')
+    limitStart = limitStart != -1 ? limitStart + 6 : param.length
+    let limitEnd = param.indexOf('&', limitStart) != -1 ? param.indexOf('&', limitStart) : param.length
+    let limit = param.substring(limitStart, limitEnd)
+    return parseInt(limit)
   }
 }
