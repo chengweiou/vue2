@@ -1,4 +1,3 @@
-
 export default store => {
   Object.keys(store.state).filter(k => store.state[k].cache !== false).forEach(k => {
     let cache = JSON.parse(sessionStorage.getItem('vuex.' + k))
