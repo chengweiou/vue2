@@ -6,6 +6,7 @@
 const defaultOption = { from: 'yyyy-MM-ddTHH:mm:ss', to: 'yyyy-MM-dd HH:mm:ss', utc: true }
 export default (e, option) => {
   if (!e) return ''
+  if (Object.prototype.toString.call(e) === '[object Date]') e = e.toISOString()
   option = { ...defaultOption, ...option }
   if (option.from === 'yyyy-MM-ddTHH:mm:ss' && e.length === 10) option.from = 'yyyy-MM-dd'
   let from = option.from
