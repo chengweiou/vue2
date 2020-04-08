@@ -18,7 +18,7 @@ export default class {
       return e[k] || e[k] === 0
     }).map(k => {
       let name = father ? `${father}.${k}` : `${k}`
-      return e[k].constructor === Object ? this.createUrlEncode(e[k], k) : `${name}=${e[k]}`
+      return e[k].constructor === Object ? this.createUrlEncode(e[k], name) : `${name}=${e[k]}`
     }).join('&')
   }
 }
