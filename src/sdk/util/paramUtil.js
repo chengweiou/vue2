@@ -15,7 +15,7 @@ export default class {
     return Object.keys(e).filter(k => {
       if (Object.prototype.toString.call(e[k]) =='[object Array]') return e[k].length
       if (Object.prototype.toString.call(e[k]) =='[object Object]') return Object.keys(e[k]).length
-      return e[k] || e[k] === 0
+      return e[k] || e[k]===false || e[k] === 0
     }).map(k => {
       let name = father ? `${father}.${k}` : `${k}`
       return e[k].constructor === Object ? this.createUrlEncode(e[k], name) : `${name}=${e[k]}`
