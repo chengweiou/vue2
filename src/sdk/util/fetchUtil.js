@@ -36,7 +36,7 @@ export default class {
         let keyUrl = k.substring(k.indexOf(' ') + 1, k.length)
         let regStr = keyUrl.replace(/(\/:\w+)/g, '/\\w+')
         let reg = new RegExp(`${regStr}$`, 'g')
-        url = url.replace(/(\?.+)/, '')
+        url = url.replace(/(\?.+)/, '').replace(/(\?$)/, '')
         if (!reg.test(url)) return
         matchList.push(k)
       })
