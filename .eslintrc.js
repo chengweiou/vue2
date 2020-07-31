@@ -7,6 +7,9 @@ module.exports = {
     'plugin:vue/essential',
     'eslint:recommended',
   ],
+  parserOptions: {
+    parser: 'babel-eslint',
+  },
   rules: {
     // 'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
@@ -21,13 +24,11 @@ module.exports = {
     'no-trailing-spaces': 'error',
     'no-multiple-empty-lines': ['error', { 'max': 2, 'maxEOF': 0, 'maxBOF': 0 }],
   },
-  parserOptions: {
-    parser: 'babel-eslint',
-  },
   overrides: [
     {
       files: [
         '**/__tests__/*.{j,t}s?(x)',
+        '**/tests/unit/**/*.spec.{j,t}s?(x)',
       ],
       env: {
         mocha: true,
