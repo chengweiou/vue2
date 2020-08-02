@@ -114,13 +114,9 @@ export default {
   },
 }
 </script>
-<i18n>
-{
-  "en": {
-    "Image": "Image"
-  },
-  "zh": {
-    "Image": "图片"
-  }
-}
+<i18n locale="en" lang="yml">
+  Image: Image sfc
+</i18n>
+<i18n locale="zh" lang="yml">
+  Image: 图片 sfc
 </i18n>
